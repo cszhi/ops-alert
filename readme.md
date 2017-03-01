@@ -1,8 +1,6 @@
 ### 运维报警管理平台 OPSAlert
 
-Laravel + VueJS
 
-此项目只是整个应用的的API部分，SPA部分请查看：[https://github.com/Qsnh/CloudBookMark-SPA](https://github.com/Qsnh/CloudBookMark-SPA)
 
 ## 安装说明
 
