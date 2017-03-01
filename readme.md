@@ -13,12 +13,21 @@ git clone https://github.com/cszhi/ops-alert.git
 composer install
 ```
 
-三、生成 `key`
+三、配置 `.env` （拷贝.env.example为.env）
+```
+……
+DB_HOST=127.0.0.1			#数据库ip
+DB_DATABASE=homestead	#数据库名称
+DB_USERNAME=homestead	#用户名
+DB_PASSWORD=secret		#数据库密码
+……
+```
+其它配置保持默认
+
+四、文件生成 `key`
 ```
 php artisan key:generate
 ```
-
-四、配置 `.env` 文件
 
 五、安装数据表
 ```
