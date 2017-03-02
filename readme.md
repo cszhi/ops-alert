@@ -112,7 +112,7 @@ post方式：`curl 'http://ip:port/alert/$token' -d hostname=$hostname -d ip=$ip
 # Program:
 #       check system load
 # History:
-# 2015/12/15	caishunzhi	First release
+# 2017/03/03	caishunzhi	First release
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
@@ -120,20 +120,25 @@ DIR=$(cd "$(dirname "$0")"; pwd)
 CURL="curl -s --connect-timeout 30"
 TOKEN=qdm4DQYnhz7Z387W
 API="http://192.168.0.1:8000/alert/$TOKEN"
-HOSTNAME=${hostname}
+HOSTNAME=$(hostname)
 IP="192.168.0.100"
 LOAD_LIMIT=1
+>$DIR/content.txt
 
-load() {
+load(){
 	LOAD=$(awk '{print $1}' /proc/loadavg)
 	LOADAVG=$(awk '{print $1,$2,$3}' /proc/loadavg)
-	if echo $LOAD > $LOAD_LIMIT |bc >/dev/null;then
+	TMP=`awk -v num1=$LOAD -v num2=$LOAD_LIMIT 'BEGIN{print(num1>num2)?"1":"0"}'`
+	if [ $TMP -eq 1 ];then
 		echo "LOAD:$LOADAVG" >$DIR/content.txt
 	fi
 }
 
+alert(){
+        $CURL $API -d hostname="$1" -d ip="$2" -d content="$3"
+}
 load
-[ -s $DIR/content.txt ] && $CURL -d hostname="$HOSTNAME" -d ip="$IP" -d content="$(cat $DIR/content.txt)"
+[ -s $DIR/content.txt ] && alert $HOSTNAME $IP "$(cat $DIR/content.txt)"
 ```
 
 ##问题
