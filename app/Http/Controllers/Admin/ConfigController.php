@@ -40,6 +40,7 @@ class ConfigController extends Controller
         $data = [
             "MAIL_HOST" => $request->get('host'),
             "MAIL_USERNAME" => $request->get('email'),
+            "MAIL_FROM_ADDRESS" => $request->get('email'),
             "MAIL_PASSWORD" => $request->get('password'),
             "MAIL_FROM_NAME" => $request->get('fromname')
         ];
