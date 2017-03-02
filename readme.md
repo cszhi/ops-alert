@@ -10,6 +10,7 @@ git clone https://github.com/cszhi/ops-alert.git
 ```
 ###二、确保`storage`、`bootstrap/cache`目录和`.env`文件让服务器有写入权限
 ```
+cd ops-alert
 chmod 777 storage/ bootstrap/cache/ .env -R
 ```
 ###三、配置 `.env`文件 （拷贝.env.example为.env）
