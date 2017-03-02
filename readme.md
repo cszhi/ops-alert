@@ -4,15 +4,15 @@
 
 ## 安装说明
 
-一、下载到本地：
+###一、下载到本地：
 ```
 git clone https://github.com/cszhi/ops-alert.git
 ```
-二、`storage`、`bootstrap/cache`目录和`.env`必须让服务器有写入权限
+###二、确保`storage`、`bootstrap/cache`目录和`.env`必须让服务器有写入权限
 ```
 chmod 777 storage/ bootstrap/cache/ .env -R
 ```
-三、配置 `.env`文件 （拷贝.env.example为.env）
+###三、配置 `.env`文件 （拷贝.env.example为.env）
 ```
 ……
 DB_HOST=127.0.0.1		#数据库ip
@@ -23,24 +23,25 @@ DB_PASSWORD=secret		#数据库密码
 ```
 其它配置保持默认
 
-四、生成 `key`
+###四、生成 `key`
 ```
 php artisan key:generate
 ```
 
-五、安装初始化数据表
+###五、安装初始化数据表
 ```
 php artisan migrate
 php artisan db:seed
 ```
 
-六、运行队列监听器
-###启动队列侦听器
+###六、运行队列监听器
+####启动队列侦听器
 ```
 php artisan queue:listen
 ```
 这个命令启动后，它将会继续运行直到被手动停止为止。
 另外可以使用`Supervisor`进程监控软件，来确保队列侦听器不会停止运行。
+
 ####Supervisor 设置
 `Ubuntu`下安装`Supervisor`
 ```
