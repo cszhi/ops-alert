@@ -40,7 +40,7 @@ php artisan db:seed
 ```
 php artisan queue:listen
 ```
-这个命令启动后，它将会继续运行直到被手动停止为止。
+执行这个命令后，它将会持续运行直到被手动停止为止。
 另外可以使用`Supervisor`进程监控软件，来确保队列侦听器不会停止运行。
 
 ####Supervisor 设置
