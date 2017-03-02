@@ -4,7 +4,8 @@ namespace App;
 class Weixin
 {
     private $corpid, $corpsecret, $agentid;
-
+    public  $token_cache;// = storage_path().DIRECTORY_SEPARATOR."token_cache";
+    
     public function __construct()
     {
         $this->corpid = config('weixin.corpid');
@@ -15,7 +16,6 @@ class Weixin
     public  $getAccessIdAPI = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?';
     public  $sendMsgAPI   = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=';
     private static $access_token = NULL;
-    public  $token_cache = base_path().DIRECTORY_SEPARATOR.'storage/token_cache';
 
     public function getAccessID() 
     {

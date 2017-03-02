@@ -33,6 +33,7 @@ class AlertWeixin extends Job implements SelfHandling, ShouldQueue
     
     public function handle(Weixin $wx)
     {
+        $wx->token_cache = storage_path().DIRECTORY_SEPARATOR."token_cache";
         return $wx->sendMsg($this->user, $this->content);
     }
     

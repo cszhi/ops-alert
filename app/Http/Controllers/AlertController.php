@@ -101,4 +101,9 @@ class AlertController extends Controller
         return $this->response('failed', 404, $message);
     }
 
+    public function test()
+    {
+        $filepath = storage_path().DIRECTORY_SEPARATOR."token_cache";
+        dd($filepath);
+    }
 }

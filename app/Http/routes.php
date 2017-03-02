@@ -35,6 +35,8 @@ Route::match(['get', 'post'], 'alert/{token}', 'AlertController@alert');
 // get('alert', 'AlertController@index');
 // get('alert/{token}', 'AlertController@alert');
 
+get('test', 'AlertController@test');
+
 
 
 
