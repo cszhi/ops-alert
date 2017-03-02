@@ -1,4 +1,5 @@
 <?php
+/*
 error_reporting(E_ALL); //E_ALL
  
 function cache_shutdown_error() {
@@ -15,6 +16,7 @@ function cache_shutdown_error() {
 }
  
 register_shutdown_function("cache_shutdown_error");
+*/
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
