@@ -69,14 +69,15 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 ##问题:
 ###一、收不到报警邮件
 确保邮件配置中相关配置正确。
-检查`storage/worker.log`日志，如果有如下报错，说明没有安装`php-curl`扩展，需要安装下。
+检查`storage/worker.log`日志，如果有如下报错:
 ```
 [Symfony\Component\Debug\Exception\FatalErrorException]  
  Call to undefined function App\curl_init() 
 ```
-
+说明没有安装`php-curl`扩展，需要安装下。
 ###二、收不到微信报警信息
 确保微信配置中相关配置正确。
+
 检查`storage/worker.log`日志，根据具体报错信息排查。
 
 
