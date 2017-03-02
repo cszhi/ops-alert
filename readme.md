@@ -136,7 +136,7 @@ load(){
 }
 
 alert(){
-        $CURL $API -d hostname="$1" -d ip="$2" -d content="$3"
+    $CURL $API -d hostname="$1" -d ip="$2" -d content="$3"
 }
 
 load
