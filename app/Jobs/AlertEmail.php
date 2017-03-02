@@ -37,6 +37,5 @@ class AlertEmail extends Job implements SelfHandling, ShouldQueue
         {
             $message->to($this->user)->subject($this->subject);
         });
-        return "email:$this->user, $this->content"
     }
 }

@@ -66,7 +66,7 @@ class AlertController extends Controller
 
     public function checkrequest()
     {
-        $rules = ['hostname' => 'required', 'ip' => 'required|ip', 'content' => 'required', ];
+        $rules = ['hostname' => 'required', 'ip' => 'required', 'content' => 'required', ];
         $validator = \Validator::make($this->request->all() , $rules);
         return $validator;
     }

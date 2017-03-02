@@ -4,5 +4,5 @@
       
     </div>
     <!-- Default to the left -->
-    <strong>Powder by <a href="#">csz</a>.</strong> All rights reserved.
+    <strong>Powder by <a href="#">Laravel</a>.</strong> All rights reserved.
   </footer>
