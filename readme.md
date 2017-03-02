@@ -21,6 +21,8 @@ DB_DATABASE=homestead	#数据库名称
 DB_USERNAME=homestead	#用户名
 DB_PASSWORD=secret		#数据库密码
 ……
+QUEUE_DRIVER=database
+……
 ```
 其它配置保持默认
 
