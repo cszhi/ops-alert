@@ -60,7 +60,22 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 ```
 `/data/www/ops-alert`是项目所在目录
 `numprocs=3`指运行并监控`3`个`queue:work`进程
+如果修改了`管理-配置`中的任何配置信息，需要重新加载下`Supervisor`
+```
+supervisorctl reload
+```
 
+##问题:
+###1、收不到报警邮件
+确保邮件配置中相关配置正确
+检查`storage/worker.log`日志，如果有如下报错，说明没有安装`php-curl`扩展，需要安装下。
+```
+[Symfony\Component\Debug\Exception\FatalErrorException]  
+ Call to undefined function App\curl_init() 
+```
+###2、收不到微信报警信息
+确保微信配置中相关配置正确
+检查`storage/worker.log`日志，根据具体报错信息排查
 ===============================
 # Laravel PHP Framework
 
