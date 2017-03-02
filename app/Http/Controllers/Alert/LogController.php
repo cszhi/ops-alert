@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Log;
+use Carbon\Carbon;
 
 class LogController extends Controller
 {

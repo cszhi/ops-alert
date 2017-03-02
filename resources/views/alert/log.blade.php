@@ -118,7 +118,7 @@
             <th style="width:8%">报警分组</th>
             <th>报警内容</th>
             <th style="width:16%">报警时间</th>
-            <th style="width:8%">详细</th>
+            <th style="width:5%">详细</th>
           </tr>
         </thead>
         <tbody>
