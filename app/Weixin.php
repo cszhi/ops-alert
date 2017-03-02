@@ -15,7 +15,7 @@ class Weixin
     public  $getAccessIdAPI = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?';
     public  $sendMsgAPI   = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=';
     private static $access_token = NULL;
-    public  $token_cache = 'storage/token_cache';
+    public  $token_cache = base_path() . DIRECTORY_SEPARATOR .'/storage/token_cache';
 
     public function getAccessID() 
     {

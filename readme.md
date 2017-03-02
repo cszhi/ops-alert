@@ -8,9 +8,9 @@
 ```
 git clone https://github.com/cszhi/ops-alert.git
 ```
-二、`storage`和`bootstrap/cache`目录必须让服务器有写入权限
+二、`storage`、`bootstrap/cache`目录和`.env`必须让服务器有写入权限
 ```
-chmod 777 storage/ bootstrap/cache/ -R
+chmod 777 storage/ bootstrap/cache/ .env -R
 ```
 三、配置 `.env`文件 （拷贝.env.example为.env）
 ```
@@ -19,8 +19,6 @@ DB_HOST=127.0.0.1		#数据库ip
 DB_DATABASE=homestead	#数据库名称
 DB_USERNAME=homestead	#用户名
 DB_PASSWORD=secret		#数据库密码
-……
-QUEUE_DRIVER=database
 ……
 ```
 其它配置保持默认
