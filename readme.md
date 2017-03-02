@@ -125,6 +125,7 @@ IP="192.168.0.100"
 LOAD_LIMIT=1
 >$DIR/content.txt
 
+#系统当前负载高于设定的阈值，将系统负载写入content.txt
 load(){
 	LOAD=$(awk '{print $1}' /proc/loadavg)
 	LOADAVG=$(awk '{print $1,$2,$3}' /proc/loadavg)
@@ -137,7 +138,9 @@ load(){
 alert(){
         $CURL $API -d hostname="$1" -d ip="$2" -d content="$3"
 }
+
 load
+#content.txt文件如果不为空，调用alert函数发送报警
 [ -s $DIR/content.txt ] && alert $HOSTNAME $IP "$(cat $DIR/content.txt)"
 ```
 
