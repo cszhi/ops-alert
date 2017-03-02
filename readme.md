@@ -40,8 +40,8 @@ php artisan db:seed
 php artisan queue:listen
 ```
 这个命令启动后，它将会继续运行直到被手动停止为止。
-可以使用`Supervisor`进程监控软件，来确保队列侦听器不会停止运行。
-###Supervisor 设置
+另外可以使用`Supervisor`进程监控软件，来确保队列侦听器不会停止运行。
+####Supervisor 设置
 `Ubuntu`下安装`Supervisor`
 ```
 apt-get install supervisor
@@ -58,12 +58,12 @@ numprocs=3
 redirect_stderr=true
 stdout_logfile=/data/www/ops-alert/storage/worker.log
 ```
-`/data/www/ops-alert`是项目所在目录
-`numprocs=3`指运行并监控`3`个`queue:work`进程
-如果修改了`管理-配置`中的任何配置信息，需要重新加载下`Supervisor`
-```
-supervisorctl reload
-```
+>`/data/www/ops-alert`是项目所在目录
+>`numprocs=3`指运行并监控`3`个`queue:work`进程
+>如果修改了`管理-配置`中的任何配置信息，需要重新加载下`Supervisor`
+>```
+>supervisorctl reload
+>```
 
 ##问题:
 ###1、收不到报警邮件
