@@ -60,7 +60,9 @@ redirect_stderr=true
 stdout_logfile=/data/www/ops-alert/storage/worker.log
 ```
 >`/data/www/ops-alert`是项目所在目录。
+
 >`numprocs=3`指运行并监控`3`个`queue:work`进程。
+
 >如果修改了`管理-配置`中的任何配置信息，需要重新加载下`Supervisor`：
 >```
 >supervisorctl reload
