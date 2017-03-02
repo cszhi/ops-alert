@@ -75,7 +75,7 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 略……
 
 ###微信设置
-1. 注册微信企业号
+1. 注册[微信企业号](https://qy.weixin.qq.com/)
 2. 进入`通讯录`新增成员。其中`帐号`就是等会新增成员要用到的`微信号`。
 3. `corpid`和`corpsecret`:进入`设置`-`权限管理`-`管理员`，就可以看到`CorpID`和`Secret`。
 4. `agentid`:进入`应用中心`，新建`消息型应用`，创建完后，进入应用，其中`应用ID`就是`agentid`。
@@ -89,6 +89,23 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 2. 每一个分组对应一个唯一的`TOKEN`，用来调用报警api时识别分组
 
 ###报警api
+
+####api地址：
+`http://ip:port/alert/$token` 如：`http://1.2.3.4:8000/alert/qdm4DQYnhz7Z387W`
+
+####调用api
+get：curl 'http://ip:port/alert/$token?hostname=$hostname&ip=$ip&content=$content'
+
+post：curl 'http://ip:port/alert/$token' -d hostname=$hostname -d ip=$ip -d content=$content
+
+```
+* hostname: 服务器名称
+* ip: 服务器ip地址
+* content: 报警内容
+```
+
+####实例
+
 
 ##问题
 
