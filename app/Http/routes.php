@@ -36,3 +36,4 @@ get('alert/{token}', 'AlertController@alert');
 
 
 
+
