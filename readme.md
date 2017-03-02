@@ -64,13 +64,35 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 
 >`numprocs=3`指运行并监控`3`个`queue:work`进程。
 
->如果修改了`管理-配置`中的任何配置信息，需要重新加载下`Supervisor`：
+>如果修改了`管理-配置`中的任何配置信息，最好重新加载下`Supervisor`：
 >```
 >supervisorctl reload
 >```
 
-##问题:
-###一、收不到报警邮件
+## 使用说明
+
+###邮箱设置
+略……
+
+###微信设置
+1.注册微信企业号
+2.进入`通讯录`新增成员。其中`帐号`就是等会新增成员要用到的`微信号`。
+3.`corpid`和`corpsecret`:进入`设置`-`权限管理`-`管理员`，就可以看到`CorpID`和`Secret`。
+4.`agentid`:进入`应用中心`，新建`消息型应用`，创建完后，进入应用，其中`应用ID`就是`agentid`。
+5.在`设置`中，有企业号的二维码，在通讯录中成员扫描该二维码就可以关注该企业号。
+
+###新增成员
+`微信号`就是在微信企业号中，新增成员时填写的`帐号`
+
+###新增分组
+1.可选三种报警方式，`微信`、`邮件`和`微信+邮件`
+2.每一个分组对应一个唯一的`TOKEN`，用来调用报警api时识别分组
+
+###报警api
+
+##问题
+
+####一、收不到报警邮件
 确保邮件配置中相关配置正确。
 检查`storage/worker.log`日志，如果有如下报错:
 ```
@@ -78,7 +100,8 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
  Call to undefined function App\curl_init() 
 ```
 说明没有安装`php-curl`扩展，需要安装下。
-###二、收不到微信报警信息
+
+####二、收不到微信报警信息
 确保微信配置中相关配置正确。
 
 检查`storage/worker.log`日志，根据具体报错信息排查。
