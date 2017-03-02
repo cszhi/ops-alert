@@ -94,9 +94,9 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 `http://ip:port/alert/$token` 如：`http://1.2.3.4:8000/alert/qdm4DQYnhz7Z387W`
 
 ####调用api
-get：curl 'http://ip:port/alert/$token?hostname=$hostname&ip=$ip&content=$content'
+get方式：`curl 'http://ip:port/alert/$token?hostname=$hostname&ip=$ip&content=$content'`
 
-post：curl 'http://ip:port/alert/$token' -d hostname=$hostname -d ip=$ip -d content=$content
+post方式：`curl 'http://ip:port/alert/$token' -d hostname=$hostname -d ip=$ip -d content=$content`
 
 ```
 * hostname: 服务器名称
@@ -104,8 +104,37 @@ post：curl 'http://ip:port/alert/$token' -d hostname=$hostname -d ip=$ip -d con
 * content: 报警内容
 ```
 
-####实例
+####调用api实例
+脚本检测系统负载，负载高于设定的阈值则调用api报警
 
+```
+#!/bin/bash
+# Program:
+#       check system load
+# History:
+# 2015/12/15	caishunzhi	First release
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+
+DIR=$(cd "$(dirname "$0")"; pwd)
+CURL="curl -s --connect-timeout 30"
+TOKEN=qdm4DQYnhz7Z387W
+API="http://192.168.0.1:8000/alert/$TOKEN"
+HOSTNAME=${hostname}
+IP="192.168.0.100"
+LOAD_LIMIT=1
+
+load() {
+	LOAD=$(awk '{print $1}' /proc/loadavg)
+	LOADAVG=$(awk '{print $1,$2,$3}' /proc/loadavg)
+	if echo $LOAD > $LOAD_LIMIT |bc >/dev/null;then
+		echo "LOAD:$LOADAVG" >$DIR/content.txt
+	fi
+}
+
+load
+[ -s $DIR/content.txt ] && $CURL -d hostname="$HOSTNAME" -d ip="$IP" -d content="$(cat $DIR/content.txt)"
+```
 
 ##问题
 
