@@ -16,7 +16,7 @@ composer install
 三、配置 `.env` （拷贝.env.example为.env）
 ```
 ……
-DB_HOST=127.0.0.1			#数据库ip
+DB_HOST=127.0.0.1		#数据库ip
 DB_DATABASE=homestead	#数据库名称
 DB_USERNAME=homestead	#用户名
 DB_PASSWORD=secret		#数据库密码
@@ -29,17 +29,13 @@ DB_PASSWORD=secret		#数据库密码
 php artisan key:generate
 ```
 
-五、安装数据表
+五、安装初始化数据表
 ```
 php artisan migrate
-```
-
-六、初始化数据库
-```
 php artisan db:seed
 ```
 
-七、使用说明
+六、使用说明
 
 ===============================
 
