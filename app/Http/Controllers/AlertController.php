@@ -74,7 +74,7 @@ class AlertController extends Controller
     public function weixin($group)
     {
         $weixinUsers = implode('|', $group->users()->lists('weixin')->toArray());
-        $contents = $this->hostname . "\n" . $this->ip . "\n" . $this->content;
+        $contents = $this->hostname . "\n" . $this->ip . "\n" . $this->content."\n".$group->id;
         $this->dispatch(new AlertWeixin($weixinUsers, $contents));
     }
 
@@ -82,10 +82,10 @@ class AlertController extends Controller
     {
         if ($this->request->has('subject')) 
         {
-            $subject = $this->request->get('subject');
+            $subject = $this->request->get('subject')."  -".$group->id;
         } else 
         {
-            $subject = "Alert: " . $this->hostname . " " . $this->ip;
+            $subject = "Alert: " . $this->hostname . " " . $this->ip."  -".$group->id;
         }
         $emailUsers = implode(',', $group->users()->lists('email')->toArray());
         $this->dispatch(new AlertEmail($emailUsers, $subject, $this->content));
