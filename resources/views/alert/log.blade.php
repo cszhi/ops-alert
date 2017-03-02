@@ -110,14 +110,14 @@
         <thead>
           <tr>
             <th style="width:4%">ID</th>
-            <th style="width:8%">服务器名</th>
-            <th style="width:20%">IP地址</th>
+            <th style="width:12%">服务器名</th>
+            <th style="width:12%">IP地址</th>
             {{--
             <th style="width:8%">报警方式</th>
             --}}
             <th style="width:8%">报警分组</th>
             <th>报警内容</th>
-            <th style="width:20%">报警时间</th>
+            <th style="width:16%">报警时间</th>
             <th style="width:8%">详细</th>
           </tr>
         </thead>
@@ -153,7 +153,7 @@
   </div>
 </div>
 @endsection
-{{--by caishunzhi 2017 --}}
+
 @section('addon')
 @include('shared.datatable')
 @include('shared.datetimepicker')
@@ -206,5 +206,11 @@
 	});
 
 </script>
+<style type="text/css">
+  .pagination {
+    margin:0;
+  }
 
+</style>
 @endsection
+{{--by caishunzhi 2017 --}}

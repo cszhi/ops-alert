@@ -51,6 +51,6 @@
 <script src="{{asset('/s/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('/s/dist/js/app.min.js')}}"></script>
 @yield('addon')
-<!-- by caishunzhi 2017 -->
+<!-- by caishunzhi 2017 & cszhi@live.com -->
 </body>
 </html>

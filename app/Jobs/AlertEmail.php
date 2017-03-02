@@ -30,7 +30,7 @@ class AlertEmail extends Job implements SelfHandling, ShouldQueue
     public function handle()
     {
 
-        Mail::send('shared.mail', ['content' => $this->content], function ($message) {
+        Mail::send('shared.email', ['content' => $this->content], function ($message) {
             //$message->from('us@example.com', 'Laravel');
             $message->to($this->user)->subject($this->subject);
         });
