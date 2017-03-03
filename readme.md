@@ -6,6 +6,7 @@
 
 ###零、环境搭建
 系统:`Ubuntu`(推荐)
+
 LAMP:
 ```
 apt-get install lamp-server^
