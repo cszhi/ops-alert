@@ -7,6 +7,8 @@
 ###零、环境搭建
 系统:`Ubuntu`(推荐)
 
+>PHP >= 5.5.9
+
 安装LAMP:
 ```
 apt-get install lamp-server^
