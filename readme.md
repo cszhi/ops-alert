@@ -7,11 +7,19 @@
 ###零、环境搭建
 系统:`Ubuntu`(推荐)
 
-LAMP:
+安装LAMP:
 ```
 apt-get install lamp-server^
 apt-get install php5-curl(Ubuntu 16.04是php-curl)
 ```
+
+开启`apache rewrite`模块
+```
+a2enmod  rewrite
+```
+
+创建数据库：
+略……
 
 ###一、下载到本地：
 ```
