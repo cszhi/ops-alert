@@ -96,7 +96,7 @@ numprocs=3
 redirect_stderr=true
 stdout_logfile=/var/www/ops-alert/storage/worker.log
 ```
->`/data/www/ops-alert`是项目所在目录。
+>`/var/www/ops-alert`是项目所在目录。
 
 >`numprocs=3`指运行并监控`3`个`queue:work`进程。
 
