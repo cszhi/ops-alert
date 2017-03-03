@@ -17,7 +17,7 @@ class CreateFailedJobsTable extends Migration
             $table->string('connection');
             $table->string('queue');
             $table->longText('payload');
-            $table->unsignedInteger('failed_at')->nullable();
+            $table->timestamp('failed_at')->nullable();
      
         });
     }

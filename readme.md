@@ -23,11 +23,21 @@ a2enmod  rewrite
 
 ###一、下载到本地：
 ```
+cd /var/www
 git clone https://github.com/cszhi/ops-alert.git
 ```
+编辑`/etc/apache2/sites-available/000-default.conf`
+
+将`DocumentRoot /var/www/html`改成`DocumentRoot /var/www/ops-alert/public`
+
+重启`apache`
+```
+service apache2 restart
+```
+
 ###二、确保`storage`、`bootstrap/cache`目录和`.env`文件让服务器有写入权限
 ```
-cd ops-alert
+cd /var/www/ops-alert
 chmod 777 storage/ bootstrap/cache/ .env -R
 ```
 ###三、配置 `.env`文件 （拷贝.env.example为.env）
