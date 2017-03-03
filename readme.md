@@ -88,13 +88,13 @@ apt-get install supervisor
 ```
 [program:laravel-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /data/www/ops-alert/artisan queue:work --sleep=3 --tries=3 --daemon
+command=php /var/www/ops-alert/artisan queue:work --sleep=3 --tries=3 --daemon
 autostart=true
 autorestart=true
-user=forge
+user=root
 numprocs=3
 redirect_stderr=true
-stdout_logfile=/data/www/ops-alert/storage/worker.log
+stdout_logfile=/var/www/ops-alert/storage/worker.log
 ```
 >`/data/www/ops-alert`是项目所在目录。
 
@@ -104,6 +104,14 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 >```
 >supervisorctl reload
 >```
+
+启动`Supervisor`
+```
+service supervisor restart
+supervisorctl reread
+supervisorctl update
+supervisorctl start laravel-worker:*
+```
 
 ## 使用说明
 
@@ -186,7 +194,7 @@ load
 
 ##问题
 
-####一、收不到报警邮件
+####Q、收不到报警邮件
 确保邮件配置中相关配置正确。
 检查`storage/worker.log`日志，如果有如下报错:
 ```
@@ -195,7 +203,7 @@ load
 ```
 说明没有安装`php-curl`扩展，需要安装下。
 
-####二、收不到微信报警信息
+####Q、收不到微信报警信息
 确保微信配置中相关配置正确。
 
 检查`storage/worker.log`日志，根据具体报错信息排查。
