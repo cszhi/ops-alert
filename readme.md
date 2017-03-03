@@ -4,6 +4,14 @@
 
 ## 安装说明
 
+###零、环境搭建
+系统:`Ubuntu`(推荐)
+LAMP:
+```
+apt-get install lamp-server^
+apt-get install php5-curl(Ubuntu 16.04是php-curl)
+```
+
 ###一、下载到本地：
 ```
 git clone https://github.com/cszhi/ops-alert.git
@@ -70,6 +78,10 @@ stdout_logfile=/data/www/ops-alert/storage/worker.log
 >```
 
 ## 使用说明
+
+###帐号密码
+帐号:admin
+密码:Admin123@
 
 ###邮箱设置
 略……
