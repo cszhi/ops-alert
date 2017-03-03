@@ -20,6 +20,16 @@ apt-get install php5-curl(Ubuntu 16.04是php-curl)
 a2enmod  rewrite
 ```
 
+编辑`/etc/apache2/apache2.conf`，找到
+```
+<Directory /var/www/>
+    Options Indexes FollowSymLinks
+    AllowOverride none
+    Require all granted
+</Directory>
+```
+将`AllowOverride None`改成`AllowOverride all`
+
 创建数据库：
 略……
 
@@ -28,21 +38,14 @@ a2enmod  rewrite
 cd /var/www
 git clone https://github.com/cszhi/ops-alert.git
 ```
-编辑`/etc/apache2/sites-available/000-default.conf`
-
-将`DocumentRoot /var/www/html`改成`DocumentRoot /var/www/ops-alert/public`
+编辑`/etc/apache2/sites-available/000-default.conf`,将`DocumentRoot /var/www/html`改成`DocumentRoot /var/www/ops-alert/public`
 
 重启`apache`
 ```
 service apache2 restart
 ```
 
-###二、确保`storage`、`bootstrap/cache`目录和`.env`文件让服务器有写入权限
-```
-cd /var/www/ops-alert
-chmod 777 storage/ bootstrap/cache/ .env -R
-```
-###三、配置 `.env`文件 （拷贝.env.example为.env）
+###二、配置 `.env`文件 （拷贝.env.example为.env）
 ```
 ……
 DB_HOST=127.0.0.1		#数据库ip
@@ -52,6 +55,12 @@ DB_PASSWORD=secret		#数据库密码
 ……
 ```
 其它配置保持默认
+
+###三、确保`storage`、`bootstrap/cache`目录和`.env`文件让服务器有写入权限
+```
+cd /var/www/ops-alert
+chmod 777 storage/ bootstrap/cache/ .env -R
+```
 
 ###四、生成 `key`
 ```
