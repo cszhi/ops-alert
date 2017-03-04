@@ -34,7 +34,7 @@ class Weixin
             if (isset($r['access_token'])) 
             {
                 $cTime = isset($r['cTime']) ? $r['cTime'] : 0;
-                if ((time()-$cTime) <= 7200 )   $returns = $r;  
+                if ((time()-$cTime) <= 3600 )   $returns = $r;  
             }
         }
 
@@ -85,6 +85,7 @@ class Weixin
 
         $returns = json_decode(self::doPost($sendMsgAPI, json_encode($data)), TRUE);
         print_r($returns);
+        print_r($sendMsgAPI);
         print_r($data);
     }
 

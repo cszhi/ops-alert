@@ -149,16 +149,19 @@
         <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
           <thead>
             <tr>
+              <th style="width:16px">ID</th>
               <th style="width:32px">组名</th>
               <th>接收成员</th>
               <th style="width:60px">报警方式</th>
               <th style="width:120px">TOKEN</th>
+              <th>创建时间</th>
               <th style="width:32px">操作</th>
             </tr>
           </thead>
           <tbody>
           @foreach($items as $i)
             <tr>
+              <td>{!! $i->id !!}</td>
               <td>{!! $i->name !!}</td>
               <td>
 								@foreach($i->users as $user)
@@ -173,6 +176,7 @@
               <td><span class="label label-primary">微信+邮件</span></td>
               @endif
 							<td><span class="label label-primary">{!!$i->token!!}</span></td>
+              <td style="width:120px">{!! $i->created_at !!}</td>
               <td>
                 <a href="#" class="fa fa-fw fa-edit" data-toggle="modal" data-target="#EditModal" data-id="{!! $i->id !!}"  data-name="{!! $i->name !!}" data-users={!! $i->users()->lists('a_user_id') !!} data-type="{!! $i->type !!}" data-token="{!! $i->token !!}" data-action="{!! route('alert.group.update', $i->id) !!}"></a>
                 <a href="#" class="fa fa-fw fa-close" data-toggle="modal" data-target="#DeleteModal" data-name="{!! $i->name !!}" data-action="{!! route('alert.group.destroy', $i->id) !!}"></a>
