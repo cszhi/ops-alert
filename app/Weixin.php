@@ -34,7 +34,7 @@ class Weixin
             if (isset($r['access_token'])) 
             {
                 $cTime = isset($r['cTime']) ? $r['cTime'] : 0;
-                if ((time()-$cTime) <= 3600 )   $returns = $r;  
+                if ((time()-$cTime) <= 7000 )   $returns = $r;  
             }
         }
 
