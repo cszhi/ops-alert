@@ -14,15 +14,18 @@ class AlertWeixin extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
     protected $user, $content;
+    protected $sendmsgapi;
+    
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user, $content)
+    public function __construct($sendmsgapi, $user, $content)
     {
         $this->user = $user;
         $this->content = $content;
+        $this->sendmsgapi = $sendmsgapi;
     }
 
     /**
@@ -33,10 +36,9 @@ class AlertWeixin extends Job implements SelfHandling, ShouldQueue
     
     public function handle(Weixin $wx)
     {
-        $wx->token_cache = storage_path().DIRECTORY_SEPARATOR."token_cache";
-        return $wx->sendMsg($this->user, $this->content);
+        return $wx->sendMsg($this->sendmsgapi, $this->user, $this->content);
     }
-    
+
     /*
     public function handle()
     {
