@@ -206,11 +206,6 @@
 	});
 
 </script>
-<style type="text/css">
-  .pagination {
-    margin:0;
-  }
 
-</style>
 @endsection
 {{--by caishunzhi 2017 --}}
