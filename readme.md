@@ -139,12 +139,12 @@ supervisorctl start laravel-worker:*
 ###报警api
 
 ####api地址：
-`http://ip:port/alert/$token` 如：`http://1.2.3.4:8000/alert/qdm4DQYnhz7Z387W`
+`http://ip:port/api/$token` 如：`http://1.2.3.4:8000/api/qdm4DQYnhz7Z387W`
 
 ####调用api
-get方式：`curl 'http://ip:port/alert/$token?hostname=$hostname&ip=$ip&content=$content'`
+get方式：`curl 'http://ip:port/api/$token?hostname=$hostname&ip=$ip&content=$content'`
 
-post方式：`curl 'http://ip:port/alert/$token' -d hostname=$hostname -d ip=$ip -d content=$content`
+post方式：`curl 'http://ip:port/api/$token' -d hostname=$hostname -d ip=$ip -d content=$content`
 
 ```
 * hostname: 服务器名称
