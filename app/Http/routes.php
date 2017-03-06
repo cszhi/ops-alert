@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
 //alert api
 Route::match(['get', 'post'], 'alert', 'AlertController@index');
 Route::match(['get', 'post'], 'alert/{token}', 'AlertController@alert');
+Route::match(['get', 'post'], 'api', 'AlertController@index');
+Route::match(['get', 'post'], 'api/{token}', 'AlertController@alert');
 // get('alert', 'AlertController@index');
 // get('alert/{token}', 'AlertController@alert');
 

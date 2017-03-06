@@ -40,15 +40,16 @@ class AlertController extends Controller
    
     public function alert($token) 
     {
-        $check = $this->checkrequest();
-        if($check->fails()){
-            return $this->responseNotFound($check->errors());
-        }
 
         $group = Group::where('token', $token)->first();
         if (!$group) 
         {
             return $this->responseNotFound("token not found: $token");
+        }
+
+        $check = $this->checkrequest();
+        if($check->fails()){
+            return $this->responseNotFound($check->errors());
         }
 
         $accessToken = $this->getAccessID();
@@ -73,6 +74,7 @@ class AlertController extends Controller
             default:
                 return $this->responseNotFound("type not found: $group->type");
         }
+        return $this->responseSuccess("ok");
     }
 
     public function checkrequest()
@@ -112,6 +114,10 @@ class AlertController extends Controller
         return $this->response('failed', 404, $message);
     }
 
+    public function responseSuccess($message) 
+    {
+        return $this->response('success', 200, $message);
+    }
 
     public function getAccessID() 
     {
