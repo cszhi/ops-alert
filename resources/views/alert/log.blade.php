@@ -69,7 +69,7 @@
         <div class="box-body">
           <div class="form-group">
             <label for="ip">IP:</label>
-            <input type="text" class="form-control" name="ip" value="{!! isset($ip) ? $ip : '' !!}">
+            <input type="text" class="form-control" name="ip" placeholder="服务器名或ip地址"  value="{!! isset($ip) ? $ip : '' !!}">
           </div>
 
           <div class="form-group">

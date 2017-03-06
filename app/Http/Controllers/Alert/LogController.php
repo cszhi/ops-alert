@@ -45,7 +45,14 @@ class LogController extends Controller
         {
             if($ip)
             {
-                $query->where('ip', '=', $ip);
+                if(filter_var($ip, FILTER_VALIDATE_IP))
+                {
+                    $query->where('ip', $ip);
+                }
+                else
+                {
+                    $query->where('hostname', $ip);
+                }
             }
         })
         ->where(function($query) use ($content)
