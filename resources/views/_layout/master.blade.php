@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="{{ asset('/s/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/s/dist/css/skins/skin-blue.min.css') }}">
   <script src="{{asset('/s/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
-  
+  <script src="{{asset('/s/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('/s/dist/js/app.min.js')}}"></script>
+  @yield('addon')
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,9 +51,6 @@
   @include('_layout/footer')
 
 </div>
-<script src="{{asset('/s/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('/s/dist/js/app.min.js')}}"></script>
-@yield('addon')
 <!-- by caishunzhi 2017 & cszhi@live.com -->
 </body>
 </html>
