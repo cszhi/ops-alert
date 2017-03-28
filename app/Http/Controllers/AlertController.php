@@ -100,7 +100,8 @@ class AlertController extends Controller
         {
             $subject = "Alert: " . $this->hostname . " " . $this->ip."  -".$group->id;
         }
-        $emailUsers = implode(',', $group->users()->lists('email')->toArray());
+        // $emailUsers = implode(',', $group->users()->lists('email')->toArray());
+        $emailUsers = $group->users()->lists('email')->toArray();
         $this->dispatch(new AlertEmail($emailUsers, $subject, $this->content));
     }
 
