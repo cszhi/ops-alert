@@ -4,7 +4,7 @@
 
 ## 安装说明
 
-###零、环境搭建
+### 零、环境搭建
 系统:`Ubuntu`(推荐)
 
 安装LAMP:(PHP >= 5.5.9)
@@ -31,7 +31,7 @@ a2enmod  rewrite
 创建数据库：
 略……
 
-###一、下载到本地：
+### 一、下载到本地：
 ```
 cd /var/www
 git clone https://github.com/cszhi/ops-alert.git
@@ -43,7 +43,7 @@ git clone https://github.com/cszhi/ops-alert.git
 service apache2 restart
 ```
 
-###二、配置 `.env`文件 （拷贝.env.example为.env）
+### 二、配置 `.env`文件 （拷贝.env.example为.env）
 ```
 ……
 DB_HOST=127.0.0.1		#数据库ip
@@ -54,32 +54,32 @@ DB_PASSWORD=secret		#数据库密码
 ```
 其它配置保持默认
 
-###三、确保`storage`、`bootstrap/cache`目录和`.env`文件让服务器有写入权限
+### 三、确保`storage`、`bootstrap/cache`目录和`.env`文件让服务器有写入权限
 ```
 cd /var/www/ops-alert
 chmod 777 storage/ bootstrap/cache/ .env -R
 ```
 
-###四、生成 `key`
+### 四、生成 `key`
 ```
 php artisan key:generate
 ```
 
-###五、安装初始化数据表
+### 五、安装初始化数据表
 ```
 php artisan migrate
 php artisan db:seed
 ```
 
-###六、运行队列监听器
-####启动队列侦听器
+### 六、运行队列监听器
+#### 启动队列侦听器
 ```
 php artisan queue:listen
 ```
 执行这个命令后，它将会持续运行直到被手动停止为止。
 另外可以使用`Supervisor`进程监控软件，来确保队列侦听器不会停止运行。
 
-####Supervisor 设置
+#### Supervisor 设置
 `Ubuntu`下安装`Supervisor`
 ```
 apt-get install supervisor
@@ -115,33 +115,33 @@ supervisorctl start laravel-worker:*
 
 ## 使用说明
 
-###帐号密码
+### 帐号密码
 帐号:admin
 密码:Admin123@
 
-###邮箱设置
+### 邮箱设置
 略……
 
-###微信设置
+### 微信设置
 1. 注册[微信企业号](https://qy.weixin.qq.com/)
 2. 进入`通讯录`新增成员。其中`帐号`就是等会新增成员要用到的`微信号`。
 3. `corpid`和`corpsecret`:进入`设置`-`权限管理`-`管理员`，就可以看到`CorpID`和`Secret`。
 4. `agentid`:进入`应用中心`，新建`消息型应用`，创建完后，进入应用，其中`应用ID`就是`agentid`。
 5. 在`设置`中，有企业号的二维码，在通讯录中成员扫描该二维码就可以关注该企业号。
 
-###新增成员
+### 新增成员
 `微信号`就是在微信企业号中，新增成员时填写的`帐号`
 
-###新增分组
+### 新增分组
 1. 可选三种报警方式，`微信`、`邮件`和`微信+邮件`
 2. 每一个分组对应一个唯一的`TOKEN`，用来调用报警api时识别分组
 
-###报警api
+### 报警api
 
-####api地址：
+#### api地址：
 `http://ip:port/api/$token` 如：`http://1.2.3.4:8000/api/qdm4DQYnhz7Z387W`
 
-####调用api
+#### 调用api
 get方式：`curl 'http://ip:port/api/$token?hostname=$hostname&ip=$ip&content=$content'`
 
 post方式：`curl 'http://ip:port/api/$token' -d hostname=$hostname -d ip=$ip -d content=$content`
@@ -152,7 +152,7 @@ post方式：`curl 'http://ip:port/api/$token' -d hostname=$hostname -d ip=$ip -
 * content: 报警内容
 ```
 
-####调用api实例
+#### 调用api实例
 脚本检测系统负载，负载高于设定的阈值则调用api报警
 
 ```
@@ -192,9 +192,9 @@ load
 [ -s $DIR/content.txt ] && alert $HOSTNAME $IP "$(cat $DIR/content.txt)"
 ```
 
-##问题
+## 问题
 
-####Q、收不到报警邮件
+#### Q、收不到报警邮件
 确保邮件配置中相关配置正确。
 检查`storage/worker.log`日志，如果有如下报错:
 ```
@@ -203,7 +203,7 @@ load
 ```
 说明没有安装`php-curl`扩展，需要安装下。
 
-####Q、收不到微信报警信息
+#### Q、收不到微信报警信息
 确保微信配置中相关配置正确。
 
 检查`storage/worker.log`日志，根据具体报错信息排查。
