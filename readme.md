@@ -166,10 +166,10 @@ export PATH
 
 DIR=$(cd "$(dirname "$0")"; pwd)
 CURL="curl -s --connect-timeout 30"
-TOKEN=qdm4DQYnhz7Z387W
-API="http://192.168.0.1:8000/alert/$TOKEN"
-HOSTNAME=$(hostname)
+TOKEN="qdm4DQYnhz7Z387W"
 IP="192.168.0.100"
+API="http://$IP:8000/alert/$TOKEN"
+HOSTNAME=$(hostname)
 LOAD_LIMIT=1
 >$DIR/content.txt
 
